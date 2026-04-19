@@ -1,0 +1,23 @@
+import axios from "axios";
+
+export default defineNuxtPlugin(() => {
+  const api = axios.create({
+    baseURL: "http://localhost:8080", // API base
+    timeout: 5000,
+  });
+
+  // Example interceptor
+  api.interceptors.request.use((config) => {
+    const token = useCookie("token").value;
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  });
+
+  return {
+    provide: {
+      api,
+    },
+  };
+});
