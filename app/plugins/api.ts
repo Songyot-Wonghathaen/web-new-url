@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default defineNuxtPlugin(() => {
   const api = axios.create({
-    baseURL: "https://url-shortener-api-rgj5.onrender.com", // API base
+    baseURL: "https://u.ulshot.shop", // API base
     timeout: 5000,
   });
 
